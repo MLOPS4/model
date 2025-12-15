@@ -10,7 +10,7 @@ from sklearn.preprocessing import LabelEncoder
 from sklearn.metrics import mean_absolute_error, mean_absolute_percentage_error, r2_score
 
 # Membaca file
-df = pd.read_csv('./dataset_clean/1763087087.csv_clean.csv', skiprows=2)
+df = pd.read_csv('./dataset_clean/1763087087.csv_clean.csv')
 
 # Membersihkan nama kolom (menghapus spasi tersembunyi)
 df.columns = df.columns.str.strip()
