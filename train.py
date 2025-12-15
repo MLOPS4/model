@@ -95,3 +95,13 @@ model = RandomForestRegressor(
 model.fit(X_train, y_train)
 
 print(f"✅ Model berhasil dilatih! (Train: {len(X_train)} baris, Test: {len(X_test)} baris)")
+
+model_package = {
+    'model_rf': model,
+    'le_prov': le_prov,
+    'le_kom': le_kom,
+    'data_ref': df_clean
+}
+
+joblib.dump(model_package, 'model_v1.pkl')
+print("\n✅ Model berhasil disimpan ke file .pkl")
