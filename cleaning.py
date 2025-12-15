@@ -6,10 +6,10 @@ import joblib
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.preprocessing import LabelEncoder
 from sklearn.metrics import mean_absolute_error, mean_absolute_percentage_error, r2_score
-
+import re
 # Open file
 def clean_data(filename):
-    df = pd.read_csv(f'./raw/{filename}', skiprows=2)
+    df = pd.read_csv(f'./dataset/{filename}', skiprows=2)
     df.columns = df.columns.str.strip()
     df['Harga'] = df['Harga'].astype(str).str.replace('Rp', '').str.replace(',', '')
     df['Harga'] = pd.to_numeric(df['Harga'], errors='coerce')
@@ -32,7 +32,6 @@ def clean_data(filename):
     le_kom = LabelEncoder()
     df['Komoditas_ID'] = le_kom.fit_transform(df['Komoditas'])
     df_clean = df.dropna()
+    df_clean.to_csv(f'./dataset_clean/{filename}_clean.csv', index=False)
 
-    df_clean.to_csv(f'./dataset/{filename}_clean.csv', index=False)
-
-    return f"./dataset/{filename}_clean.csv"
+    return f"./dataset_clean/{filename}_clean.csv"
