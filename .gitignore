@@ -46,3 +46,5 @@ logs/
 .DS_Store
 Thumbs.db
 
+train/model_v1.pkl
+train/model_arima_v1.pkl
